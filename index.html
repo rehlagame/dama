@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>الداما الخليجية</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/board.css">
+</head>
+<body>
+<div class="game-wrapper">
+    <!-- لوحة التحكم والنتائج العلوية -->
+    <header class="dashboard">
+        <div class="player-card" id="player-stats">
+            <h2 class="player-name">اللاعب</h2>
+            <div class="stats">
+                <span class="pieces">الحطب: <span id="player-pieces">16</span></span>
+                <span class="kings">الشيوخ: <span id="player-kings">0</span></span>
+            </div>
+        </div>
+
+        <div class="timer-card">
+            <div id="game-timer">00:00</div>
+        </div>
+
+        <div class="player-card robot-card" id="robot-stats">
+            <h2 class="player-name">الروبوت</h2>
+            <div class="stats">
+                <span class="pieces">الحطب: <span id="robot-pieces">16</span></span>
+                <span class="kings">الشيوخ: <span id="robot-kings">0</span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- منطقة الرقعة -->
+    <main class="board-area">
+        <div id="dama-board">
+            <!-- سيتم توليد المربعات والأحجار هنا عبر الجافاسكريبت -->
+        </div>
+    </main>
+
+    <!-- أزرار التحكم السفلية -->
+    <footer class="controls">
+        <button id="btn-start" class="btn primary">لعبة جديدة</button>
+        <button id="btn-undo" class="btn secondary" disabled>تراجع</button>
+    </footer>
+
+    <!-- حقوق الملكية للشركة -->
+    <div class="company-credits">
+        <a href="https://www.olosolutions.cc/" target="_blank" rel="noopener noreferrer">
+            Created by: <span>Olo Solutions</span>
+        </a>
+    </div>
+</div>
+
+<!-- نافذة  نهاية اللعبة -->
+<div id="game-over-modal" class="modal-overlay">
+    <div class="modal-content">
+        <h2 id="end-title" class="end-title">مبروك!</h2>
+        <p id="end-message" class="end-message">لقد سحقت الروبوت بذكائك.</p>
+        <div class="modal-stats">
+            <span>الوقت: <b id="end-time">00:00</b></span>
+        </div>
+        <div class="modal-buttons">
+            <button id="btn-play-again" class="btn primary">العب مرة أخرى</button>
+        </div>
+    </div>
+</div>
+
+<!-- استدعاء ملفات المنطق البرمجي -->
+<script src="js/config.js"></script>
+<script src="js/engine/board.js"></script>
+<script src="js/engine/rules.js"></script>
+<script src="js/ai/evaluator.js"></script>
+<script src="js/ai/minimax.js"></script>
+<script src="js/ui/renderer.js"></script>
+<script src="js/ui/events.js"></script>
+<script src="js/ui/timer.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
