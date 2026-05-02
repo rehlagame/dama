@@ -1,65 +1,65 @@
+/* --- لوحة النتائج والوقت (مخصصة للهواتف) --- */
 .dashboard {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* تقسيم الشاشة لـ 3 أقسام متوازنة */
     align-items: center;
-    background-color: rgba(34, 34, 34, 0.8); /* خلفية داكنة للوحة */
+    background-color: rgba(34, 34, 34, 0.8);
     border-radius: 12px;
-    padding: 15px 20px;
+    padding: 12px 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(237, 184, 28, 0.3);
-}
-
-.player-card {
-    display: flex;
-    flex-direction: column;
     gap: 5px;
 }
 
-.robot-card {
-    text-align: left;
+.player-card, .robot-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* توسيط النصوص */
+    text-align: center;
 }
 
 .player-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--accent-color);
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     text-shadow: 1px 1px 2px #000;
+    white-space: nowrap;
 }
 
 .stats {
     display: flex;
     flex-direction: column;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #eee;
-    gap: 3px;
+    gap: 4px;
+}
+
+/* منع الكلمات من النزول لسطر جديد */
+.stats .pieces, .stats .kings {
+    white-space: nowrap;
 }
 
 .timer-card {
     background-color: #111;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border-radius: 8px;
     border: 2px solid var(--accent-color);
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.8), 0 2px 10px rgba(237, 184, 28, 0.2);
 }
 
 #game-timer {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     font-family: monospace;
     color: var(--accent-color);
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-shadow: 0 0 5px rgba(237, 184, 28, 0.5);
 }
 
-@media (max-width: 480px) {
-    .dashboard {
-        padding: 10px;
-    }
-    .player-name {
-        font-size: 1rem;
-    }
-    #game-timer {
-        font-size: 1.4rem;
-        padding: 5px 10px;
-    }
+/* الشاشات الأكبر بقليل (تابلت فما فوق) */
+@media (min-width: 480px) {
+    .dashboard { padding: 15px 20px; gap: 15px; }
+    .player-name { font-size: 1.3rem; }
+    .stats { font-size: 1rem; }
+    #game-timer { font-size: 1.8rem; letter-spacing: 2px; }
 }
